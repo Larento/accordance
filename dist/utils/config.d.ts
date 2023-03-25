@@ -4,11 +4,13 @@ declare const AccordanceConfig: t.IntersectionC<[t.TypeC<{
     local: t.TypeC<{
         root: t.StringC;
     }>;
-    remote: t.TypeC<{
+    remote: t.IntersectionC<[t.TypeC<{
         username: t.StringC;
         host: t.StringC;
         root: t.StringC;
-    }>;
+    }>, t.PartialC<{
+        port: t.NumberC;
+    }>]>;
     prefer: t.UnionC<[t.LiteralC<"local">, t.LiteralC<"remote">]>;
 }>, t.PartialC<{
     syncIgnore: t.ArrayC<t.StringC>;
@@ -25,6 +27,8 @@ export declare const readConfig: (configPath: string) => {
         username: string;
         host: string;
         root: string;
+    } & {
+        port?: number | undefined;
     };
     prefer: "local" | "remote";
 } & {
