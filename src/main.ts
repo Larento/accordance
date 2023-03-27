@@ -230,6 +230,8 @@ class AccordCLI {
         config: IAccordanceConfig,
         ignorePatterns: string[],
     ) {
+        // Temporarily disable remote watcher
+        return;
         const sshAgentSock = process.env.SSH_AUTH_SOCK;
         const sshConfig: ConnectConfig = {
             host: config.remote.host,

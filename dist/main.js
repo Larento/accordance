@@ -161,6 +161,8 @@ class AccordCLI {
         });
     }
     async watchRemote(config, ignorePatterns) {
+        // Temporarily disable remote watcher
+        return;
         const sshAgentSock = process.env.SSH_AUTH_SOCK;
         const sshConfig = {
             host: config.remote.host,
